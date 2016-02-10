@@ -11,7 +11,6 @@
 @interface Card : NSObject
 
 
-//@property NSString *imageName;
 @property int no;
 @property bool isFront;
 @property int index;
@@ -20,7 +19,6 @@
 
 - (NSString*) imageName;
 - (void) Reverse:(UICollectionView *)collectionView;
-
 
 @end
 

@@ -139,8 +139,6 @@ enum Status status = Enpty;
     // セルの設定
     Card *card = self.cards[indexPath.item];
 
-    NSLog(@"%@ %d",card.imageName,card.no);
-
     [cell.image setImage:[UIImage imageNamed:card.imageName]];
     cell.delegate = self;
     return cell;
