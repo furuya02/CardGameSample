@@ -10,8 +10,16 @@
 
 @interface Card : NSObject
 
+
+//@property NSString *imageName;
 @property int no;
-@property int mark;
+@property bool isFront;
+@property int index;
+
+-(id)initWithMark:(NSString*)mark no:(int)no;
+
+- (NSString*) imageName;
+- (void) Reverse:(UICollectionView *)collectionView;
 
 
 @end

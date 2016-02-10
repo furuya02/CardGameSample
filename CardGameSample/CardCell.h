@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CardCell : UICollectionViewCell
+@protocol CardCellDelegate;
 
+
+@interface CardCell : UICollectionViewCell
+@property (nonatomic,weak) id <CardCellDelegate> delegate;
+
+@property (weak, nonatomic) IBOutlet UIImageView *image;
+
+@end
+
+@protocol CardCellDelegate <NSObject>
+
+@optional
+- (void) cardCell:(CardCell *)cell
+longPressStateChanged:(UIGestureRecognizerState)state
+         atLocation:(CGPoint)location;
 @end

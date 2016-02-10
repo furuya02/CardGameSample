@@ -14,13 +14,21 @@
 - (void) awakeFromNib {
     [super awakeFromNib];
 
-//    // UITextViewタップ時にセル選択とみなされるように設定
-//    self.textView.scrollEnabled = NO;
-//    self.textView.userInteractionEnabled = NO;
-//
-//    // 上下左右に　textMargin分の余白を設定する
-//    self.textView.textContainerInset = UIEdgeInsetsMake(textMargin, textMargin, textMargin, textMargin);
-//    self.textView.textContainer.lineFragmentPadding = 0.0f;
+    UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    [self.contentView addGestureRecognizer:recognizer];
+}
+
+
+- (void) longPressStateChanged:(UILongPressGestureRecognizer *)recognizer {
+    
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)recognizer{
+    if([self.delegate respondsToSelector:@selector(cardCell:longPressStateChanged:atLocation:)]){
+        CGPoint location = [recognizer locationInView:recognizer.view];
+        [self.delegate cardCell:self longPressStateChanged:recognizer.state atLocation:location];
+
+    }
 }
 @end
 
